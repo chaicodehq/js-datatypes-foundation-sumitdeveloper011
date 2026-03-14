@@ -46,21 +46,36 @@
  *   splitAndJoinRangoli("red,blue", ",", "-")  // => "red-blue"
  */
 export function repeatPattern(pattern, times) {
-  // Your code here
+  if (typeof pattern !== "string" || typeof times !== "number" || !Number.isInteger(times) || times < 0) {
+    return "";
+  }
+  return pattern.repeat(times);
 }
 
 export function extractRangoliCenter(design, start, end) {
-  // Your code here
+  if (typeof design !== "string" || typeof start !== "number" || typeof end !== "number") {
+    return "";
+  }
+  return design.slice(start, end);
 }
 
 export function splitAndJoinRangoli(colorString, oldSep, newSep) {
-  // Your code here
+  if (typeof colorString !== "string") {
+    return "";
+  }
+  return colorString.split(oldSep).join(newSep);
 }
 
 export function replaceRangoliColor(design, oldColor, newColor) {
-  // Your code here
+  if (typeof design !== "string" || typeof oldColor !== "string" || typeof newColor !== "string") {
+    return "";
+  }
+  return design.replaceAll(oldColor, newColor);
 }
 
 export function makeRangoliBorder(char, length) {
-  // Your code here
+  if (typeof char !== "string" || char.length === 0 || typeof length !== "number" || length <= 0) {
+    return "";
+  }
+  return char.repeat(Math.ceil(length / char.length)).slice(0, length);
 }

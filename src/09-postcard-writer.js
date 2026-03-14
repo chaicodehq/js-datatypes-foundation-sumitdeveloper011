@@ -52,21 +52,48 @@
  *   countVowels("Namaste")     // => 3
  */
 export function writePostcard(sender, receiver, message) {
-  // Your code here
+  if (typeof sender !== "string" || typeof receiver !== "string" || typeof message !== "string") {
+    return "";
+  }
+  const trimmedSender = sender.trim();
+  const trimmedReceiver = receiver.trim();
+  const trimmedMessage = message.trim();
+  if (trimmedSender === "" || trimmedReceiver === "" || trimmedMessage === "") {
+    return "";
+  }
+  return `Priy ${trimmedReceiver},\n\n${trimmedMessage}\n\nAapka/Aapki,\n${trimmedSender}`;
 }
 
 export function isValidPincode(code) {
-  // Your code here
+  if (typeof code !== "string") {
+    return false;
+  }
+  const trimmedCode = code.trim();
+  if (trimmedCode.length !== 6 || trimmedCode.startsWith("0")) {
+    return false;
+  }
+  return /^\d+$/.test(trimmedCode);
 }
 
 export function formatPostcardField(label, value, width) {
-  // Your code here
+  if (typeof label !== "string" || typeof value !== "string") {
+    return "";
+  }
+  const w = width || 12;
+  return label.padEnd(w) + ": " + value;
 }
 
 export function isFromState(address, stateCode) {
-  // Your code here
+  if (typeof address !== "string" || typeof stateCode !== "string") {
+    return false;
+  }
+  return address.endsWith(stateCode);
 }
 
 export function countVowels(message) {
-  // Your code here
+  if (typeof message !== "string") {
+    return 0;
+  }
+  const matches = message.match(/[aeiouAEIOU]/g);
+  return matches ? matches.length : 0;
 }
